@@ -1,0 +1,85 @@
+-- 📄 1. View original dataset
+SELECT * 
+FROM london_data;
+
+--  2. Create working table
+CREATE TABLE london_airbnb LIKE london_data;
+
+--  3. Insert data into working table
+INSERT INTO london_airbnb
+SELECT * 
+FROM london_data;
+
+--  4. View inserted data
+SELECT * 
+FROM london_airbnb;
+
+
+-- 📊 ANALYSIS QUERIES
+
+
+-- 💰 5. Top 5 most expensive listings
+SELECT name, neighbourhood, price, room_type
+FROM london_airbnb
+ORDER BY price DESC
+LIMIT 5;
+
+--  6. Listings with highest number of reviews
+SELECT name, MAX(number_of_reviews) AS max_reviews
+FROM london_airbnb
+GROUP BY name
+ORDER BY max_reviews DESC
+LIMIT 10;
+
+--  7. Private rooms with highest availability
+SELECT name, room_type, availability_365
+FROM london_airbnb
+WHERE room_type = 'Private room'
+ORDER BY availability_365 DESC
+LIMIT 10;
+
+--  8. Top listings with highest reviews per month
+SELECT name, reviews_per_month
+FROM london_airbnb
+WHERE reviews_per_month IS NOT NULL
+ORDER BY reviews_per_month DESC
+LIMIT 10;
+
+-- 🏘️ 9. Average price by neighbourhood
+SELECT neighbourhood, AVG(price) AS avg_price
+FROM london_airbnb
+GROUP BY neighbourhood
+ORDER BY avg_price DESC;
+
+-- 🛌 10. Count of listings by room type
+SELECT room_type, COUNT(*) AS list_count
+FROM london_airbnb
+GROUP BY room_type
+ORDER BY list_count DESC;
+
+-- 💸 11. Top 10 listings under £100
+SELECT neighbourhood, price
+FROM london_airbnb
+WHERE price < 100
+ORDER BY price DESC
+LIMIT 10;
+
+-- 🗓️ 12. Count of reviews by review date
+SELECT last_review, COUNT(*) AS count_reviews
+FROM london_airbnb
+WHERE last_review IS NOT NULL
+GROUP BY last_review
+ORDER BY last_review DESC;
+
+--  13.Average availability of private rooms
+SELECT room_type, AVG(availability_365) AS avg_availability
+FROM london_airbnb
+WHERE room_type = 'Private room'
+GROUP BY room_type;
+
+-- 📆 14. Total monthly reviews 
+
+SELECT substring(last_review,4,10) as `month`, sum(reviews_per_month) as sum_month_review
+FROM london_airbnb
+GROUP BY`month`
+oORDER BY sum_month_review desc;
