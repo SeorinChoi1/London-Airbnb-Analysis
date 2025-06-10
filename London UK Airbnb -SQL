@@ -45,26 +45,26 @@ WHERE reviews_per_month IS NOT NULL
 ORDER BY reviews_per_month DESC
 LIMIT 10;
 
--- 🏘️ 9. Average price by neighbourhood
+--  9. Average price by neighbourhood
 SELECT neighbourhood, AVG(price) AS avg_price
 FROM london_airbnb
 GROUP BY neighbourhood
 ORDER BY avg_price DESC;
 
--- 🛌 10. Count of listings by room type
+--  10. Count of listings by room type
 SELECT room_type, COUNT(*) AS list_count
 FROM london_airbnb
 GROUP BY room_type
 ORDER BY list_count DESC;
 
--- 💸 11. Top 10 listings under £100
+--  11. Top 10 listings under £100
 SELECT neighbourhood, price
 FROM london_airbnb
 WHERE price < 100
 ORDER BY price DESC
 LIMIT 10;
 
--- 🗓️ 12. Count of reviews by review date
+--  12. Count of reviews by review date
 SELECT last_review, COUNT(*) AS count_reviews
 FROM london_airbnb
 WHERE last_review IS NOT NULL
@@ -77,7 +77,7 @@ FROM london_airbnb
 WHERE room_type = 'Private room'
 GROUP BY room_type;
 
--- 📆 14. Total monthly reviews 
+--  14. Total monthly reviews 
 
 SELECT substring(last_review,4,10) as `month`, sum(reviews_per_month) as sum_month_review
 FROM london_airbnb
