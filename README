@@ -1,14 +1,26 @@
 🏠 London Airbnb SQL Analysis
-This project analyzes Airbnb listings in London.
-It explores prices, availability, reviews, and room types.
+
+This project analyzes Airbnb listings in London using SQL and Tableau to uncover insights about pricing, availability, and review trends.
 
 📊 What This Project Covers
-Top 5 most expensive listings
-Most available private rooms
-Average price by neighbourhood
-Listings under £100
-Monlty review trends
 
-🛠️ Tools Used
-SQL (MySQL)
-Tableau
+1. Top 5 Most Expensive Listings
+Identify the highest-priced Airbnb properties in London.
+2. Average Price by Neighbourhood
+Discover which areas command the highest and lowest rental prices.
+3. Average Availability & Minimum Nights
+Analyze how often listings are available and their booking requirements.
+4. Monthly Review Trends
+Track guest review patterns over time to understand demand cycles.
+
+-- Tools Used
+SQL (MySQL) – For querying, aggregating, and cleaning the dataset.
+Tableau – For visualizing
+
+
+--Outcome
+1.Hotel rooms are the most expensive on average, while shared rooms are the most affordable.
+2.Kensington and Westminster rank among the most expensive neighborhoods for Airbnb listings.
+3.Hotel rooms offer the highest availability  and also have the lowest minimum night requirements, making them highly flexible for travelers.
+4.Monthly review trends reveal clear seasonality, with peak activity during the summer months, reflecting increased tourist demand.
+
